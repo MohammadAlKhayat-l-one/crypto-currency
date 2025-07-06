@@ -29,7 +29,7 @@ export class LocalStorageService {
       selectedCoin: 'bitcoin',
       currency: 'usd',
       timeRange: '7d',
-      theme: 'light',
+      theme: 'dark',
     };
   }
 
