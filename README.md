@@ -1,46 +1,172 @@
-# Getting Started with Create React App
+# Cryptocurrency Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, interactive cryptocurrency dashboard built with React, TypeScript, and Tailwind CSS. This application provides real-time cryptocurrency data, interactive charts, and user customization features.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### Core Features
+- **Real-time Cryptocurrency Data**: Fetches top cryptocurrencies from CoinGecko API
+- **Interactive Price Charts**: Line charts showing price history with customizable time ranges
+- **Responsive Design**: Modern UI that works on desktop and mobile devices
+- **Dark/Light Mode**: Toggle between themes for better user experience
 
-### `npm start`
+### Advanced Features
+- **User Customization**: Add/remove cryptocurrencies from the dashboard
+- **Persistent Preferences**: User selections are saved using localStorage
+- **Multiple Currencies**: Support for USD, EUR, and GBP
+- **Time Range Selection**: View price history for 24h, 7d, or 30d periods
+- **Real-time Updates**: Data refreshes automatically with caching
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Technology Stack
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **Frontend**: React 18 with TypeScript
+- **Styling**: Tailwind CSS with custom components
+- **Charts**: Recharts for interactive data visualization
+- **HTTP Client**: Axios for API requests
+- **State Management**: React Hooks with localStorage persistence
+- **API**: CoinGecko API for cryptocurrency data
 
-### `npm test`
+## Project Structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+src/
+├── components/
+│   ├── Dashboard.tsx          # Main dashboard component
+│   ├── CryptoCard.tsx         # Individual crypto card
+│   ├── PriceChart.tsx         # Interactive price chart
+│   └── Controls.tsx           # User controls and settings
+├── services/
+│   ├── cryptoApi.ts           # CoinGecko API service
+│   └── localStorage.ts        # Local storage management
+├── types/
+│   └── crypto.ts              # TypeScript interfaces
+├── App.tsx                    # Main app component
+└── index.css                  # Tailwind CSS styles
+```
 
-### `npm run build`
+## Setup Instructions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Prerequisites
+- Node.js (version 16 or higher)
+- npm or yarn package manager
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd cryptocurrency-dashboard
+   ```
 
-### `npm run eject`
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3. **Start the development server**
+   ```bash
+   npm start
+   ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. **Open your browser**
+   Navigate to `http://localhost:3000` to view the application
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Build for Production
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+npm run build
+```
 
-## Learn More
+The build files will be created in the `build` folder.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Key Implementation Notes
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### API Integration
+- Uses CoinGecko API for real-time cryptocurrency data
+- Implements caching to reduce API calls and improve performance
+- Handles API rate limits gracefully with error handling
+
+### State Management
+- Uses React hooks for local state management
+- Implements localStorage for persistent user preferences
+- Maintains separate loading states for different data fetching operations
+
+### Component Architecture
+- **Dashboard**: Main orchestrator component managing all state and data flow
+- **CryptoCard**: Reusable component for displaying individual cryptocurrency data
+- **PriceChart**: Interactive chart component using Recharts library
+- **Controls**: User interface for customization options
+
+### Styling Approach
+- Tailwind CSS for utility-first styling
+- Custom CSS classes for component-specific styles
+- Dark mode support with CSS custom properties
+- Responsive design using Tailwind's responsive utilities
+
+### Performance Optimizations
+- API response caching (1-minute cache duration)
+- Debounced API calls to prevent excessive requests
+- Lazy loading of chart components
+- Optimized re-renders using React.memo where appropriate
+
+## API Endpoints Used
+
+- `GET /coins/markets` - Fetch cryptocurrency market data
+- `GET /coins/{id}/market_chart` - Fetch price history data
+
+## Customization Options
+
+### Adding New Cryptocurrencies
+1. Use the "Add Cryptocurrency" section in the controls
+2. Select from available cryptocurrencies
+3. New coins will be added to your dashboard
+
+### Changing Display Options
+- **Currency**: Switch between USD, EUR, and GBP
+- **Time Range**: Select 24h, 7d, or 30d for price charts
+- **Theme**: Toggle between light and dark modes
+
+### Removing Cryptocurrencies
+- Click the "X" button on any cryptocurrency card
+- At least one cryptocurrency must remain on the dashboard
+
+## Error Handling
+
+The application includes comprehensive error handling:
+- Network request failures
+- API rate limiting
+- Invalid data responses
+- Local storage access issues
+
+## Browser Compatibility
+
+- Chrome (recommended)
+- Firefox
+- Safari
+- Edge
+
+## Future Enhancements
+
+- Real-time WebSocket updates
+- Portfolio tracking features
+- Price alerts and notifications
+- Advanced chart indicators
+- Export functionality for data
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License.
+
+## Acknowledgments
+
+- [CoinGecko API](https://www.coingecko.com/en/api) for cryptocurrency data
+- [Recharts](https://recharts.org/) for chart components
+- [Tailwind CSS](https://tailwindcss.com/) for styling utilities
